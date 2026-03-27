@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sleep Better • Study Better • UVic Sleep Guide </title>
+  <title>Sleep Better • Study Better • UVIC Sleep Guide by Knox</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root{
@@ -36,6 +36,37 @@
 
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
+
+    .skip-link{
+      position:absolute;
+      left:-9999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    .skip-link:focus{
+      left:1rem;
+      top:1rem;
+      width:auto;
+      height:auto;
+      padding:.9rem 1.1rem;
+      background:#fff;
+      color:#000;
+      border-radius:10px;
+      z-index:2000;
+      font-weight:800;
+      box-shadow:0 10px 30px rgba(0,0,0,.3);
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    select:focus-visible,
+    input:focus-visible,
+    .card:focus-visible{
+      outline:3px solid #fcd34d;
+      outline-offset:3px;
+    }
 
     .container{
       width:min(1200px, 92%);
@@ -126,6 +157,7 @@
     .btn{
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:.7rem;
       background:var(--accent);
       color:#082032;
@@ -219,7 +251,8 @@
       font-size:1.02rem;
     }
 
-    .callout{
+    .callout,
+    .visually-highlighted-note{
       background:linear-gradient(135deg, rgba(99,230,226,0.08), rgba(245,158,11,0.08));
       border:1px solid rgba(99,230,226,0.16);
       border-left:6px solid var(--accent-3);
@@ -233,12 +266,6 @@
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:1.2rem;
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:1rem;
     }
 
     .info-box{
@@ -329,6 +356,7 @@
       color:var(--accent-2);
       margin-top:.15rem;
       transition:transform .2s ease;
+      flex-shrink:0;
     }
 
     .card.open .card-title i{
@@ -368,7 +396,8 @@
       padding:1rem;
     }
 
-    .quiz-question label{
+    .quiz-question label,
+    .diary-grid label{
       display:block;
       font-weight:700;
       color:#fff;
@@ -384,11 +413,6 @@
       padding:.85rem .9rem;
       font-size:1rem;
       outline:none;
-    }
-
-    select:focus, input:focus{
-      border-color:var(--accent);
-      box-shadow:0 0 0 3px rgba(99,230,226,0.12);
     }
 
     .result-box{
@@ -509,25 +533,26 @@
     @media (max-width:700px){
       section{padding:1.4rem}
       .hero-actions{flex-direction:column;align-items:center}
-      .btn{width:100%;justify-content:center}
+      .btn{width:100%}
     }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header>
     <div class="hero-content container">
-      <div class="eyebrow">UVic Sleep Guide • 2026</div>
+      <div class="eyebrow">UVIC Sleep Guide • Knox • 2026</div>
       <h1>🌙 Sleep Better • Study Better</h1>
       <p class="hero-sub">
-        A detailed, interactive, student-focused sleep hygiene resource for university learners. 
+        A detailed, interactive, student-focused sleep hygiene resource for university learners. This enhanced version keeps the strongest parts of the original project while making the learning outcomes clearer, the accessibility features more visible, and the overall experience more polished and supportive.
       </p>
 
       <div class="hero-actions">
-        <button class="btn" onclick="document.getElementById('science').scrollIntoView({behavior:'smooth'})">
+        <button type="button" class="btn" onclick="document.getElementById('science').scrollIntoView({behavior:'smooth'})">
           <i class="fa-solid fa-moon"></i> Start Learning
         </button>
-        <button class="btn secondary" onclick="showWelcomeMessage()">
+        <button type="button" class="btn secondary" onclick="showWelcomeMessage()">
           <i class="fa-solid fa-star"></i> What This Guide Helps With
         </button>
       </div>
@@ -538,16 +563,16 @@
           <span>recommended for most adults and students</span>
         </div>
         <div class="hero-stat">
-          <strong>23%</strong>
-          <span>higher recall tied to stronger sleep-dependent memory learning</span>
+          <strong>Clear goals</strong>
+          <span>measurable outcomes added for learning</span>
         </div>
         <div class="hero-stat">
           <strong>6 videos</strong>
           <span>embedded learning tools for reinforcement</span>
         </div>
         <div class="hero-stat">
-          <strong>Quiz + planner</strong>
-          <span>turn information into action</span>
+          <strong>Interactive tools</strong>
+          <span>quiz, routine builder, diary, and learner choice</span>
         </div>
       </div>
     </div>
@@ -555,11 +580,12 @@
 
   <nav>
     <div class="nav-inner">
+      <a href="#outcomes">Outcomes</a>
       <a href="#science">Science</a>
       <a href="#videos">Videos</a>
       <a href="#myths">Myths</a>
       <a href="#tips">Tips</a>
-      <a href="#quiz">Quiz</a>
+      <a href="#quiz">Self-Check</a>
       <a href="#routine">Routine Builder</a>
       <a href="#diary">Sleep Diary</a>
       <a href="#resources">Resources</a>
@@ -567,7 +593,40 @@
     </div>
   </nav>
 
-  <main class="container">
+  <main id="main-content" class="container">
+
+    <section id="outcomes">
+      <div class="section-title">
+        <i class="fa-solid fa-bullseye"></i>
+        <h2>Learning Outcomes</h2>
+      </div>
+      <p class="section-intro">
+        By the end of this guide, students should be able to do more than simply read about sleep. They should be able to demonstrate practical understanding through reflection, habit selection, and personal planning.
+      </p>
+
+      <div class="grid-2">
+        <div class="info-box">
+          <h3>Identify</h3>
+          <p>Identify at least <strong>two sleep habits</strong> that may be affecting their energy, focus, mood, or academic performance.</p>
+        </div>
+        <div class="info-box">
+          <h3>Explain</h3>
+          <p>Explain <strong>one way sleep supports learning</strong>, such as memory consolidation, emotional regulation, or physical recovery.</p>
+        </div>
+        <div class="info-box">
+          <h3>Build</h3>
+          <p>Build <strong>one realistic personal sleep routine</strong> using the routine planner and select habits they can actually follow.</p>
+        </div>
+        <div class="info-box">
+          <h3>Reflect</h3>
+          <p>Use the diary tool to <strong>reflect on one sleep pattern</strong> and connect it to a specific next step for improvement.</p>
+        </div>
+      </div>
+
+      <div class="visually-highlighted-note">
+        <strong>Accessibility and learner choice:</strong> this resource uses clear sections, repeated key ideas, interactive tools, visible focus states, keyboard-friendly expandable content, and flexible navigation to support different learning needs and preferences.
+      </div>
+    </section>
 
     <section id="science">
       <div class="section-title">
@@ -579,7 +638,7 @@
       </p>
 
       <div class="callout">
-        <strong>Key idea:</strong> Repetition matters in learning, and this guide intentionally repeats the most important points in different formats: explanation, myth busting, practical advice, videos, and self-testing. That makes the resource more educational, clearer, and easier to remember.
+        <strong>Key idea:</strong> repetition matters in learning, and this guide intentionally repeats the most important points in different formats: explanation, myth busting, practical advice, videos, and self-checking. That makes the resource clearer, more educational, and easier to remember.
       </div>
 
       <div class="grid-2">
@@ -602,7 +661,7 @@
           </p>
         </div>
         <div class="info-box">
-          <h3>Why “just push through” fails</h3>
+          <h3>Why “just push through” often fails</h3>
           <p>
             Sleep debt does not only make you tired. It can reduce reaction time, attention, memory encoding, mood regulation, and self-control. That is why poor sleep can make studying take longer even when you are spending more time doing it.
           </p>
@@ -622,6 +681,11 @@
       <p class="section-intro">
         These videos reinforce the same key ideas from different angles: science, habit design, emotional health, and practical tools. That repetition makes the guide more resourceful and easier to learn from.
       </p>
+      <p class="small">If embedded videos do not load in your viewer, the rest of the guide still works as a complete learning resource.</p>
+
+      <div class="callout">
+        <strong>Note on perspectives:</strong> these videos were selected for clarity and relevance to student sleep habits. Future versions of this resource could include additional voices and perspectives to broaden representation while keeping the same key sleep concepts.
+      </div>
 
       <div class="video-grid">
         <div class="video-card">
@@ -668,11 +732,11 @@
         <h2>Common Myths vs Better Facts</h2>
       </div>
       <p class="section-intro">
-        Click each myth to expand it. This section intentionally revisits the same core themes from a different angle: routine, recovery, caffeine, screens, naps, and the false belief that sleep can be ignored without consequences.
+        Click or use the keyboard to expand each myth. This section intentionally revisits the same core themes from a different angle: routine, recovery, caffeine, screens, naps, and the false belief that sleep can be ignored without consequences.
       </p>
 
       <div class="accordion">
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>Myth 1: I can catch up on sleep fully on weekends.</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -682,7 +746,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>Myth 2: All-nighters help before exams.</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -692,7 +756,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>Myth 3: Caffeine fixes tiredness.</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -702,7 +766,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>Myth 4: Screens before bed do not matter if I am already tired.</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -712,7 +776,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>Myth 5: Naps always repair poor night sleep.</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -722,7 +786,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>Myth 6: Alcohol helps me sleep better.</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -732,7 +796,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>Myth 7: I function perfectly on 5 hours every night.</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -742,7 +806,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>Myth 8: Sleep only matters for physical energy.</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -764,7 +828,7 @@
       </p>
 
       <div class="accordion">
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>1. Keep a consistent bedtime and wake time</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -775,7 +839,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>2. Reduce screens before bed</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -786,7 +850,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>3. Keep the room cool, dark, and quiet</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -797,7 +861,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>4. Get morning daylight exposure</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -808,7 +872,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>5. Avoid caffeine too late in the day</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -819,7 +883,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>6. Build a short wind-down routine</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -830,7 +894,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>7. Use the bed mainly for sleep</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -841,7 +905,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>8. Exercise regularly, but time it well</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -852,7 +916,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>9. Keep naps short and earlier in the day</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -863,7 +927,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>10. If you cannot sleep, reset gently</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -874,7 +938,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>11. Track patterns, not perfection</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -885,7 +949,7 @@
           </div>
         </div>
 
-        <div class="card" onclick="toggleCard(this)">
+        <div class="card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="handleCardKey(event, this)">
           <div class="card-title">
             <span>12. Improve one habit first, then build</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -901,10 +965,10 @@
     <section id="quiz">
       <div class="section-title">
         <i class="fa-solid fa-list-check"></i>
-        <h2>Sleep Hygiene Self-Quiz</h2>
+        <h2>Sleep Hygiene Self-Check</h2>
       </div>
       <p class="section-intro">
-        Answer honestly. This quiz repeats the guide’s main habits in question form, which helps reinforce the learning while giving you personalized feedback.
+        Answer honestly. This self-check repeats the guide’s main habits in question form, which helps reinforce the learning while giving you personalized feedback.
       </p>
 
       <div class="quiz-wrap">
@@ -1000,10 +1064,10 @@
       </div>
 
       <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <button class="btn" onclick="calculateScore()">
-          <i class="fa-solid fa-chart-column"></i> Submit Quiz
+        <button type="button" class="btn" onclick="calculateScore()">
+          <i class="fa-solid fa-chart-column"></i> Submit Self-Check
         </button>
-        <button class="btn secondary" onclick="quickQuiz()">
+        <button type="button" class="btn secondary" onclick="quickQuiz()">
           <i class="fa-solid fa-bolt"></i> Quick Sleep Fact
         </button>
       </div>
@@ -1014,7 +1078,7 @@
     <section id="routine">
       <div class="section-title">
         <i class="fa-solid fa-calendar-check"></i>
-        <h2>Build Your Personal Sleep Routine</h2>
+        <h2>Build My Routine</h2>
       </div>
       <p class="section-intro">
         Select habits you want to follow tonight. This section turns repeated advice into an action plan. The more specific the plan, the easier it is to follow.
@@ -1056,23 +1120,23 @@
       </div>
 
       <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <button class="btn" onclick="updateRoutine()">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> Build Routine
+        <button type="button" class="btn" onclick="updateRoutine()">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Build My Routine
         </button>
-        <button class="btn secondary" onclick="saveRoutineMessage()">
+        <button type="button" class="btn secondary" onclick="saveRoutineMessage()">
           <i class="fa-solid fa-file-export"></i> Save / Export Plan
         </button>
       </div>
 
       <div id="routine-output" class="preview">
-        Your routine preview appears here. Select some habits and click <strong>Build Routine</strong>.
+        Your routine preview appears here. Select some habits and click <strong>Build My Routine</strong>.
       </div>
     </section>
 
     <section id="diary">
       <div class="section-title">
         <i class="fa-solid fa-chart-line"></i>
-        <h2>Sleep Diary Simulator</h2>
+        <h2>Sleep Diary</h2>
       </div>
       <p class="section-intro">
         Logging one night will not solve everything, but tracking patterns helps you learn what affects your sleep and reinforces the guide’s main message: awareness + consistency = better outcomes.
@@ -1090,8 +1154,8 @@
       </div>
 
       <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <button class="btn" onclick="logDiary()">
-          <i class="fa-solid fa-pen"></i> Log Night
+        <button type="button" class="btn" onclick="logDiary()">
+          <i class="fa-solid fa-pen"></i> Log Tonight’s Sleep
         </button>
       </div>
 
@@ -1103,7 +1167,7 @@
     <section id="resources">
       <div class="section-title">
         <i class="fa-solid fa-life-ring"></i>
-        <h2>UVic, Victoria, and General Support Resources</h2>
+        <h2>UVIC, Victoria, and General Support Resources</h2>
       </div>
       <p class="section-intro">
         Good educational resources should not only explain the problem. They should also direct people toward support, next steps, and local options.
@@ -1111,7 +1175,7 @@
 
       <div class="resource-list">
         <div class="resource-item">
-          <h3>UVic Student Wellness</h3>
+          <h3>UVIC Student Wellness</h3>
           <p>Explore campus wellness services, counselling supports, stress management resources, and student health education. This guide works best when paired with real support if sleep problems are persistent.</p>
         </div>
         <div class="resource-item">
@@ -1132,13 +1196,17 @@
           <h3>When to seek help sooner</h3>
           <p>Seek support sooner if you are experiencing persistent insomnia, extreme daytime sleepiness, loud snoring with choking or gasping, major mood disruption, or inability to function during the day.</p>
         </div>
+        <div class="resource-item">
+          <h3>Accessibility and flexible use</h3>
+          <p>This guide is designed for flexible pacing and different learning preferences by using section-based navigation, repeated key ideas, interactive tools, clear visual structure, and keyboard-accessible expandable content.</p>
+        </div>
       </div>
     </section>
 
     <section id="action" class="closing">
       <div class="section-title" style="justify-content:center;">
         <i class="fa-solid fa-rocket"></i>
-        <h2>Take Action Tonight</h2>
+        <h2>Take Action Tonight: Start Small</h2>
       </div>
       <p class="section-intro" style="max-width:850px;margin:0 auto 1.2rem;">
         The biggest educational message of this whole guide is simple and worth repeating clearly: better sleep usually comes from repeated small habits, not one dramatic fix. Choose one or two habits tonight, repeat them tomorrow, and build from there.
@@ -1151,30 +1219,39 @@
         4. Get light in the morning.<br>
         5. Repeat the same pattern for several days before judging whether it is working.
       </div>
-      <button class="btn" onclick="shareMessage()">
+      <button type="button" class="btn" onclick="shareMessage()">
         <i class="fa-solid fa-share-nodes"></i> Share This Resource
       </button>
     </section>
-
+    
   </main>
 
   <footer>
-    <p><strong>Sleep Better • Study Better </strong>  - written and designed single-page educational resource by Knox.</p>
+    <p><strong>Sleep Better • Study Better</strong> — enhanced single-page educational resource by Knox.</p>
     <p class="small">
-      The semi-polished version 
+      This version tightens the learning outcomes, makes accessibility features more visible, improves keyboard usability, refines the wording, and keeps the project clear, interactive, and student-centered.
     </p>
     <p class="small">
-      Do Better! Be Better!
+      Creative Commons note and institutional references can still be edited to match your final course submission requirements.
     </p>
   </footer>
 
   <script>
     function showWelcomeMessage() {
-      alert("This guide helps students understand sleep science, break common myths, build routines, self-assess habits, and find support. The repetition is intentional so the ideas are easier to learn and apply.");
+      alert("This guide helps students identify sleep habits, explain how sleep affects learning, build one realistic routine, and reflect on their own patterns. It is designed to be flexible, interactive, and accessible for different learners.");
+    }
+
+    function handleCardKey(event, card) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleCard(card);
+      }
     }
 
     function toggleCard(card) {
       card.classList.toggle('open');
+      const expanded = card.classList.contains('open');
+      card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     }
 
     function quickQuiz() {
